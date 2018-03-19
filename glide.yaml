@@ -1,4 +1,4 @@
-package: wbcomic
+package: gogrpcgin
 import:
 - package: google.golang.org/grpc
 - package: github.com/golang/protobuf/protoc-gen-go

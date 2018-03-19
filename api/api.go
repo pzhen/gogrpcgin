@@ -1,8 +1,8 @@
 package main
 
 import(
-	"wbcomic/conf"
-	"wbcomic/api/routers"
+	"gogrpcgin/conf"
+	"gogrpcgin/api/routers"
 )
 
 // dev/pro

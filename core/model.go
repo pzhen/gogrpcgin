@@ -2,8 +2,8 @@ package core
 
 import (
 	"math/rand"
-	"wbcomic/conf"
-	"wbcomic/utils"
+	"gogrpcgin/conf"
+	"gogrpcgin/utils"
 
 	"github.com/go-xorm/xorm"
 	_ "github.com/go-sql-driver/mysql"

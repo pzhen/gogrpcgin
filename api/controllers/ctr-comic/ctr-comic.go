@@ -1,8 +1,8 @@
 package ctr_comic
 
 import (
-	"wbcomic/api/client"
-	"wbcomic/pb"
+	"gogrpcgin/api/client"
+	"gogrpcgin/pb"
 	"github.com/gin-gonic/gin"
 )
 

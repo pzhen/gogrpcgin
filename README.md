@@ -119,7 +119,7 @@ VALUES
 
 前提是 对golang有所熟悉, 比如环境搭,工具链的使用。
 
-1.<code>git clone https://github.com/pzhen/golang-grpc-gin.git  ./wbcomic </code>执行 glide up 将类包更新下来(需要vpn,你懂得)
+1.<code>git clone https://github.com/pzhen/golang-grpc-gin.git  ./gogrpcgin </code>执行 glide up 将类包更新下来(需要vpn,你懂得)
 
 2.将数据表导入mysql
 

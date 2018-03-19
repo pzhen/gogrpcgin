@@ -3,10 +3,10 @@ package client
 import(
 	"sync"
 	"google.golang.org/grpc"
-	"wbcomic/conf"
+	"gogrpcgin/conf"
 	"time"
 	"context"
-	"wbcomic/utils"
+	"gogrpcgin/utils"
 )
 
 

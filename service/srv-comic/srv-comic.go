@@ -3,8 +3,8 @@ package srv_comic
 import(
 	"context"
 
-	"wbcomic/pb"
-	"wbcomic/core"
+	"gogrpcgin/pb"
+	"gogrpcgin/core"
 )
 
 type ComicInfo struct {

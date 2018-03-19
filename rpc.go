@@ -8,9 +8,9 @@ import(
 	"net/http"
 	"time"
 
-	"wbcomic/conf"
-	"wbcomic/utils"
-	"wbcomic/service"
+	"gogrpcgin/conf"
+	"gogrpcgin/utils"
+	"gogrpcgin/service"
 
 	"google.golang.org/grpc/reflection"
 	"google.golang.org/grpc"

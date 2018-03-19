@@ -2,8 +2,8 @@ package routers
 
 import(
 	"github.com/gin-gonic/gin"
-	"wbcomic/conf"
-	"wbcomic/api/controllers/ctr-comic"
+	"gogrpcgin/conf"
+	"gogrpcgin/api/controllers/ctr-comic"
 	"time"
 	jwt_lib "github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/contrib/jwt"

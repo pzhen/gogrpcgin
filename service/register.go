@@ -2,8 +2,8 @@ package service
 
 import (
 	"google.golang.org/grpc"
-	"wbcomic/pb"
-	"wbcomic/service/srv-comic"
+	"gogrpcgin/pb"
+	"gogrpcgin/service/srv-comic"
 )
 
 func ServiceReg(server *grpc.Server)  {
