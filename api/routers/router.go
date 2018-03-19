@@ -8,11 +8,15 @@ import(
 	jwt_lib "github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/contrib/jwt"
 	"github.com/ekyoung/gin-nice-recovery"
+	"github.com/DeanThompson/ginpprof"
 )
 
 func InitRun()  {
 
 	engine := gin.Default()
+	//http://127.0.0.1:8080/debug/pprof/
+	ginpprof.Wrap(engine)
+
 	engine.Use(nice.Recovery(recoveryHandler))
 
 	// 公开路由

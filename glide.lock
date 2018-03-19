@@ -1,8 +1,10 @@
-hash: a65eb014cb48f561f080573418e33b37c6b2d97079bd6c2caa50cb960c53c3d5
-updated: 2018-03-17T23:24:49.212573+08:00
+hash: 6cd7806c5840e40ba7a639698a29d50b1a06815531b03207ca91ec6439d30076
+updated: 2018-03-19T16:47:22.384428+08:00
 imports:
 - name: github.com/BurntSushi/toml
   version: a368813c5e648fee92e5f6c30e3944ff9d5e8895
+- name: github.com/DeanThompson/ginpprof
+  version: 8c0e31bfeaa87bd40412ee8a8ba383f5f700ff72
 - name: github.com/dgrijalva/jwt-go
   version: 06ea1031745cb8b3dab3f6a236daf2b0aa468b7e
   subpackages:
@@ -44,10 +46,6 @@ imports:
   - ptypes/any
   - ptypes/duration
   - ptypes/timestamp
-- name: github.com/grpc-ecosystem/go-grpc-middleware
-  version: eb23b08d08bbe930113a6512a7a829050341448c
-  subpackages:
-  - recovery
 - name: github.com/mattn/go-isatty
   version: 6ca4dbf54d38eea1a992b3c722a76a5d1c4cb25c
 - name: github.com/ugorji/go
@@ -55,7 +53,7 @@ imports:
   subpackages:
   - codec
 - name: golang.org/x/net
-  version: e0c57d8f86c17f0724497efcb3bc617e82834821
+  version: 24dd3780ca4f75fed9f321890729414a4b5d3f13
   subpackages:
   - context
   - http2
