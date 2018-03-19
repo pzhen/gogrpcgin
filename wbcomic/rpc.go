@@ -76,11 +76,11 @@ func startTrace() {
 
 // new server engine
 func newServer() *grpc.Server{
-	return grpc.NewServer(ServerInterceptor())
+	return grpc.NewServer(WithServerInterceptor())
 }
 
 // new server recovery,duration interceptor
-func ServerInterceptor() grpc.ServerOption {
+func WithServerInterceptor() grpc.ServerOption {
 	return grpc.UnaryInterceptor(serverInterceptorHandle)
 }
 
