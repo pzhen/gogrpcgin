@@ -10,6 +10,20 @@ import(
 )
 
 
+func NewRpcConn() *grpc.ClientConn{
+
+	var address = conf.Conf.App.Rpc.RpcAddr
+
+	p := &sync.Pool{
+		New: func() interface {}{
+			conn,_ := grpc.Dial(address, grpc.WithInsecure(),WithClientDurativeInterceptor())
+			return  conn
+		},
+	}
+
+	return p.Get().(*grpc.ClientConn)
+}
+
 func WithClientDurativeInterceptor() grpc.DialOption {
 
 	return grpc.WithUnaryInterceptor(clientDurativeInterceptorHandle)
@@ -29,18 +43,4 @@ func clientDurativeInterceptorHandle(
 	err := invoker(ctx, method, req, reply, cc, opts...)
 	utils.LogPrint("invoke remote method=%s duration=%s error=%v", method, time.Since(start), err)
 	return err
-}
-
-func NewRpcConn() *grpc.ClientConn{
-
-	var address = conf.Conf.App.Rpc.RpcAddr
-
-	p := &sync.Pool{
-		New: func() interface {}{
-			conn,_ := grpc.Dial(address, grpc.WithInsecure(),WithClientDurativeInterceptor())
-			return  conn
-		},
-	}
-
-	return p.Get().(*grpc.ClientConn)
 }
