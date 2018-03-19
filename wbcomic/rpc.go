@@ -76,16 +76,12 @@ func startTrace() {
 
 // new server engine
 func newServer() *grpc.Server{
-	return grpc.NewServer(WithServerInterceptor())
+
+	return grpc.NewServer(grpc.UnaryInterceptor(composeUnaryServerInterceptors(serverRecoveryInterceptorHandle,serverDurationInterceptorHandle)))
 }
 
-// new server recovery,duration interceptor
-func WithServerInterceptor() grpc.ServerOption {
-	return grpc.UnaryInterceptor(serverInterceptorHandle)
-}
-
-// server recovery,duration interceptor handle
-func serverInterceptorHandle(ctx context.Context,req interface{},info *grpc.UnaryServerInfo,handler grpc.UnaryHandler)(
+// server recovery interceptor handle
+func serverRecoveryInterceptorHandle(ctx context.Context,req interface{},info *grpc.UnaryServerInfo,handler grpc.UnaryHandler)(
 	interface{}, error) {
 
 	defer func() (err error){
@@ -108,10 +104,33 @@ func serverInterceptorHandle(ctx context.Context,req interface{},info *grpc.Unar
 		return
 	}()
 
-	start := time.Now()
-
-	utils.LogPrint("invoke server method=%s duration=%s ", info.FullMethod, time.Since(start))
-
 	return handler(ctx, req)
+}
+
+// server duration interceptor handle
+func serverDurationInterceptorHandle(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (interface{}, error) {
+
+	start := time.Now()
+	resp, err := handler(ctx, req)
+
+	utils.LogPrint("invoke server method=%s duration=%s error=%v", info.FullMethod, time.Since(start), err)
+
+	return resp, err
+}
+
+// multi interceptors
+func composeUnaryServerInterceptors(interceptor, next grpc.UnaryServerInterceptor) grpc.UnaryServerInterceptor {
+	return func(
+		ctx context.Context,
+		req interface{},
+		info *grpc.UnaryServerInfo,
+		handler grpc.UnaryHandler) (interface{}, error) {
+
+		return interceptor(ctx, req, info,
+			func(nextCtx context.Context, nextReq interface{}) (interface{}, error) {
+
+				return next(nextCtx, nextReq, info, handler)
+			})
+	}
 }
 
