@@ -55,12 +55,26 @@ slave = [
     ]
 
 
-[database.wbcomic]
+
+
+
+[elasticsearch.comic]
 master = [
-    "root:123456@tcp(127.0.0.1:3306)/solr?charset=utf8&timeout=5s",
-    "root:123456@tcp(127.0.0.1:3306)/solr?charset=utf8&timeout=5s"
+    "http://172.16.234.163:9200",
+    "http://172.16.234.163:9200"
     ]
 slave = [
-    "root:123456@tcp(127.0.0.1:3306)/solr?charset=utf8&timeout=5s",
-    "root:123456@tcp(127.0.0.1:3306)/solr?charset=utf8&timeout=5s"
+    "http://172.16.234.163:9200",
+    "http://172.16.234.163:9200"
+    ]
+
+
+[elasticsearch.author]
+master = [
+    "http://172.16.234.163:9200",
+    "http://172.16.234.163:9200"
+    ]
+slave = [
+    "http://172.16.234.163:9200",
+    "http://172.16.234.163:9200"
     ]

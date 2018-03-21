@@ -19,6 +19,9 @@ type config struct {
 	// MySQL
 	DB database `toml:"database"`
 
+	// Es
+	ES elasticsearch `toml:"elasticsearch"`
+
 	// 静态资源
 	Static static
 
@@ -28,8 +31,6 @@ type config struct {
 	// Memcached
 	Memcached memcached
 
-	// Es
-	Elasticsearch  elasticsearch
 }
 
 // 项目配置
@@ -62,6 +63,8 @@ type static struct {
 
 type database map[string]map[string][]string
 
+type elasticsearch map[string]map[string][]string
+
 type redis struct {
 
 	Server string `toml:"server"`
@@ -69,11 +72,6 @@ type redis struct {
 }
 
 type memcached struct {
-
-	Server string `toml:"server"`
-}
-
-type elasticsearch struct {
 
 	Server string `toml:"server"`
 }
