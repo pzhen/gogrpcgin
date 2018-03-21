@@ -6,7 +6,6 @@ import (
 	"gogrpcgin/utils"
 	"encoding/json"
 	"reflect"
-	"net/http"
 )
 
 type Elastic struct {
@@ -65,4 +64,13 @@ func (e *Elastic)Query(q string, v *EsResponse) {
 	r,_ := utils.HttPost(indexUrl, q);
 
 	json.Unmarshal(r, v)
+
+	// if  Error   panic
+	s:= reflect.ValueOf(v).Elem()
+	typeOfT := s.Type()
+	for i:=0;i<s.NumField();i++ {
+		if typeOfT.Field(i).Name == "Error"{
+			panic("elasticsearch is error :" + v.Error.Type)
+		}
+	}
 }
