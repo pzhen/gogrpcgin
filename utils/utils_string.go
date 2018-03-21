@@ -1,6 +1,8 @@
 package utils
 
-import "strings"
+import(
+	"strings"
+)
 
 //截取字符串
 func Substr(s string, pos, length int) string {

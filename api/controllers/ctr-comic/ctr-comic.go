@@ -13,7 +13,7 @@ func Test(c *gin.Context)  {
 	res,_ :=pb.NewComicServiceClient(client.NewRpcConn()).GetComicListByPage(c, &pb.ComicFilterRequest{Status:1})
 
 	var user core.EsResponse
-	core.MasterES("author","author").Query(`{"query": {"bools": {"should": {"regexp": {"sina_nickname": ".*果.*"}}}}}`,&user)
+	core.MasterES("author","author").Query(`{"query": {"bool": {"should": {"regexp": {"sina_nickname": ".*果.*"}}}}}`,&user)
 
 	c.JSON(200,gin.H{
 		"code":1,

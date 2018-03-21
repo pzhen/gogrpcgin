@@ -5,7 +5,6 @@ import (
 	"math/rand"
 	"gogrpcgin/utils"
 	"encoding/json"
-	"reflect"
 )
 
 type Elastic struct {
@@ -65,12 +64,7 @@ func (e *Elastic)Query(q string, v *EsResponse) {
 
 	json.Unmarshal(r, v)
 
-	// if  Error   panic
-	s:= reflect.ValueOf(v).Elem()
-	typeOfT := s.Type()
-	for i:=0;i<s.NumField();i++ {
-		if typeOfT.Field(i).Name == "Error"{
-			panic("elasticsearch is error :" + v.Error.Type)
-		}
+	if v.Error.Type != "" {
+		panic("elasticsearch is error :" + v.Error.Type)
 	}
 }
