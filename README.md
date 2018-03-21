@@ -17,6 +17,8 @@ grpc 提供服务，gin调用服务从而提供 RESTfull Api, demo还非常简�
 
 - 4.package : 采用 glide  实现包管理
 
+- 5.全文检索引擎 : 采用es 实现es的配置以及相关操作
+
 
 ## 目录结构
 
@@ -76,6 +78,10 @@ grpc 提供服务，gin调用服务从而提供 RESTfull Api, demo还非常简�
 
    采用 toml 来对配置的解码,针对 开发环境 生产环境 加载不同配置
    
+- 5.es
+   
+   es主从配置的封装等
+   
 
 ### api部分
 
@@ -130,8 +136,6 @@ VALUES
 5.访问 http://localhost:8080/rpc/comic/test 可以看到数据,命令行查看调用栈时间
 
 可以手动抛出 panic ,来验证拦截器。
-
-
 
 
    
