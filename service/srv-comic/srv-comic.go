@@ -38,8 +38,8 @@ func (c *ComicInfo) GetComicListByPage (ctx context.Context, in *pb.ComicFilterR
 	comicList := make([]ComicInfo, 0)
 	err = core.MasterDB("comic").Where("status = ?", 1).Limit(limit, start).Find(&comicList)
 
-//	time.Sleep(3*time.Second)
-////panic("aaaaa3333")
+	//	time.Sleep(3*time.Second)
+	////panic("aaaaa3333")
 	comicListResponse = new(pb.ComicListResponse)
 
 	for _,v := range comicList{

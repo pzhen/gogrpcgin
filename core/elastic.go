@@ -60,7 +60,7 @@ func (e *Elastic)Query(q string, v *EsResponse) {
 
 	indexUrl := e.Host + "/" + e.IndexName +"/" + e.TypeName + "/_search/"
 
-	r,_ := utils.HttPost(indexUrl, q);
+	r,_ := utils.HttPost(indexUrl, q)
 
 	json.Unmarshal(r, v)
 

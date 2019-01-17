@@ -77,12 +77,13 @@ func startTrace() {
 // new server engine
 func newServer() *grpc.Server{
 
-	return grpc.NewServer(grpc.UnaryInterceptor(composeUnaryServerInterceptors(serverRecoveryInterceptorHandle,serverDurationInterceptorHandle)))
+	return grpc.NewServer(grpc.UnaryInterceptor(composeUnaryServerInterceptors(serverRecoveryInterceptorHandle,
+		serverDurationInterceptorHandle)))
 }
 
 // server recovery interceptor handle
-func serverRecoveryInterceptorHandle(ctx context.Context,req interface{},info *grpc.UnaryServerInfo,handler grpc.UnaryHandler)(
-	interface{}, error) {
+func serverRecoveryInterceptorHandle(ctx context.Context,req interface{},info *grpc.UnaryServerInfo,
+handler grpc.UnaryHandler)(interface{}, error) {
 
 	defer func() (err error){
 		if r := recover(); r != nil {
@@ -108,7 +109,8 @@ func serverRecoveryInterceptorHandle(ctx context.Context,req interface{},info *g
 }
 
 // server duration interceptor handle
-func serverDurationInterceptorHandle(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (interface{}, error) {
+func serverDurationInterceptorHandle(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo,
+handler grpc.UnaryHandler) (interface{}, error) {
 
 	start := time.Now()
 	resp, err := handler(ctx, req)
